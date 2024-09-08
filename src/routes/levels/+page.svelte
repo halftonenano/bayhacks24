@@ -24,7 +24,12 @@
 
 <div class="grid w-full grid-cols-5 h-[100vh]">
 	<div class="col-span-3 flex w-full flex-col gap-4 p-4 overflow-y-scroll">
-		{#each levels as level (level.id)}
+		<div class="text-6xl font-bold p-4">
+      OmniLingual
+      <span class="text-2xl text-neutral-500">For BayHacks</span>
+    </div>
+
+    {#each levels as level (level.id)}
 			<a href="/levels/{level.id}/{difficulties[difficulty]}" on:mouseenter={() => (hovered = level.id)}>
 				<div class={cn('rounded-lg border shadow-lg px-5 py-12 mr-48 transition-all duration-500 ease-in-out', hovered === level.id && 'bg-blue-500 text-white font-bold mr-0')}>
 					{#if spanish}
@@ -39,7 +44,6 @@
 
 	<div class="col-span-2 h-full bg-gradient-to-r from-white to-blue-200 grid place-items-center">
 		{#if selectedLevel}
-			
       <div class="flex flex-col">
         <div class="text-3xl font-bold">
           {#if spanish}
@@ -48,6 +52,14 @@
             {selectedLevel.name}
           {/if}
         </div>
+        <div class="text-md text-neutral-700 w-96">
+          {#if spanish}
+            {selectedLevel.spanish_description}
+          {:else}
+            {selectedLevel.description}
+          {/if}
+        </div>
+        
         <div class="w-96 rounded-lg shadow-lg bg-white flex flex-col place-items-center p-8 gap-4">
           <div class="w-64 aspect-square rounded-md bg-gradient-to-tr from-blue-500 to-blue-700 shadow-md">
           </div>
